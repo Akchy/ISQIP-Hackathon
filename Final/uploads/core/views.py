@@ -40,5 +40,10 @@ def donate_item(request,pk):
     return render(request, 'core/item_detail.html', {'item': item})
 
 def cat(request,val):
-    item=Document.objects.filter(color__in=[val])
+    item=Document.objects.filter(categories__in=[val])
     return render(request, 'core/home.html', {'documents': item})
+
+def sold(request,pk):
+    item=Document.objects.get(id=pk)
+    item.delete()
+    return redirect('home')

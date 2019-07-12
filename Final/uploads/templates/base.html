@@ -1,11 +1,40 @@
 <!DOCTYPE html>
 <html>
   <head>
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+      
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <meta charset="utf-8">
-    <title>Simple File Upload</title>
+    <title>FShare</title>
   </head>
   <body>
+      <a style="text-decoration: none" href="{% url 'home' %}"><h1 style="text-align: center" class="text-dark"><b>FShare</b></h1></a>
+
+      <div class="row" style="text-align: center; background-color: yellow;padding-top: 10px;width: 100%;margin:0">
+        <div class="col-sm-3" id="cat">
+          <p><a href="{% url 'home' %}">All</a></p>
+        </div>
+        <div class="col-sm-2" id="cat">
+          <p><a href="{% url 'cat' val="equip" %}">Equipments</a></p>
+        </div>
+        <div class="col-sm-2" id="cat">
+          <p><a href="{% url 'cat' val="cloth" %}">Cloths</a></p>
+        </div>
+        <div class="col-sm-2" id="cat">
+          <p><a href="{% url 'cat' val="book" %}">Books</a></p>
+        </div>
+        <div class="col-sm-3" id="cat">
+          <p><a href="{% url 'cat' val="toy" %}">Toys</a></p>
+        </div>
+      </div>
     {% block content %}
     {% endblock %}
+
+    <div class="row" style="width: 50%;margin-left:45% ">
+     <footer> 
+    <a style="color:white;" class="btn btn-primary" href="">
+      Help us grow</a>
+    </footer>
+    </div>
   </body>
 </html>

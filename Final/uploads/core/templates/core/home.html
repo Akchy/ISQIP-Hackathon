@@ -1,31 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <ul>
-    <li>
-      <a href="{% url 'simple_upload' %}">Simple Upload</a>
-    </li>
-    <li>
-      <a href="{% url 'model_form_upload' %}">Model Form Upload</a>
-    </li>
-  </ul>
 
-  <p><a href="{% url 'home' %}">All</a></p>
-  <p><a href="{% url 'cat' val="equip" %}">Equipments</a></p>
-  <p><a href="{% url 'cat' val="cloth" %}">Cloths</a></p>
-  <p><a href="{% url 'cat' val="book" %}">books</a></p>
-  <p><a href="{% url 'cat' val="toy" %}">Toys</a></p>
-  <p>Uploaded files:</p>
-  <ul>
-    {% for obj in documents %}
-      <li>div
-        <a href="{% url 'donate_item' pk=obj.pk %}"> {{ obj.name }}</a>
-        
-        <!--<a href="{{ obj.document.url }}">{{ obj.name }}</a><br>-->
-        {{ obj.description }}<br>{{ obj.phone }}<br>
-        {{ obj.color }}
-        <small>(Uploaded at: {{ obj.uploaded_at }})</small>
-      </li>
-    {% endfor %}
-  </ul>
+<div style="margin-top:20px">
+    <a style="color:white"
+    href="{% url 'model_form_upload' %}"><button class="btn btn-primary" style="float:right;margin-right:10px;margin-top:10px;">
+      Donate Here</button></a>
+    <br><br><br>
+  <div>
+    <div class="container" style="text-align: center">
+      {% for obj in documents %}
+      <div class="card" style="width:auto">
+        {% if obj.document %}
+        <br>
+        <img class="card-img-top" src="http://localhost:8000{{obj.document.url}}" alt="Card image" style="width:50%;display: block;margin-left: auto;margin-right: auto;">
+        {% endif %}
+        <div class="card-body">
+          <h2 class="card-title"><u>{{ obj.name }}</u></h2>
+          <p style="font-size:15px" class="card-text">{{ obj.description }}</p>
+          <a href="{% url 'donate_item' pk=obj.pk %}" class="btn btn-primary">Explore</a><br>
+          <p style="float: right">(Uploaded at: {{ obj.uploaded_at }})</p>
+        </div>
+      </div>
+      <br>
+      {% endfor %}
+      
+    </div>
+  </div>
 {% endblock %}

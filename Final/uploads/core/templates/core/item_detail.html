@@ -1,14 +1,35 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    
-        <li>div
-        {{ item.name }}
-        
-        <a href="{{ item.document.url }}">{{ item.name }}</a><br>
-        {{ item.description }}<br>{{ item.phone }}
-        <small>(Uploaded at: {{ item.uploaded_at }})</small>
-        </li>
-        <p><a href="{% url 'home' %}">Return to home</a></p>
 
+<div style="margin-top:20px">
+    
+        <div>
+    <div class="container" style="text-align: center">
+      
+      <div class="card" style="width:auto">
+        {% if item.document %}
+        <br>
+        <img class="card-img-top" src="http://localhost:8000{{item.document.url}}" alt="Card image" style="width:30%;display: block;margin-left: auto;margin-right: auto;">
+        {% endif %}
+        <div class="card-body">
+          <h2 class="card-title"><u>{{ item.name }}</u></h2>
+          <p style="font-size:20px" class="card-text">{{ item.description }}</p>
+          <p style="font-size:15px" class="card-text">{{ item.phone}}</p>
+          <p style="font-size:15px" class="card-text">#{{ item.categories }}</p>
+          <p style="font-size:15px" class="card-text">{{ item.address }}</p>
+          <a style="color:white" href="{% url 'sold' pk=item.id %}"><button class="btn btn-primary" style="margin-right:10px;margin-top:10px;">Sold Out</button></a>
+        <br>
+          <p style="float: right">(Uploaded at: {{ item.uploaded_at }})</p>
+          
+        </div>
+      </div>
+      <br>
+      
+    </div>
+  </div>
+
+
+
+        
 {% endblock %}

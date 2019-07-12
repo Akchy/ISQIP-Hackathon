@@ -13,7 +13,7 @@ class Document(models.Model):
     name=models.CharField(max_length=25,blank=False)
     email=models.EmailField(max_length=25,blank=False)
     phrase=models.CharField(max_length=25,blank=False)
-    color = models.CharField(max_length=15, choices=CAT_CHOICES, default='green',blank=False)
+    categories = models.CharField(max_length=15, choices=CAT_CHOICES, default='green',blank=False)
     phone=models.IntegerField(blank=False)
     address=models.CharField(max_length=255,blank=False)
     description = models.CharField(max_length=255, blank=False)

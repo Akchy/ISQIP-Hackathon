@@ -1,1 +1,14 @@
-<h2>sdfjdifj</h2>
+{% extends 'base.html' %}
+
+{% block content %}
+    
+        <li>div
+        {{ item.name }}
+        
+        <a href="{{ item.document.url }}">{{ item.name }}</a><br>
+        {{ item.description }}<br>{{ item.phone }}
+        <small>(Uploaded at: {{ item.uploaded_at }})</small>
+        </li>
+        <p><a href="{% url 'home' %}">Return to home</a></p>
+
+{% endblock %}

@@ -38,3 +38,7 @@ def model_form_upload(request):
 def donate_item(request,pk):
     item = Document.objects.get(id=pk)
     return render(request, 'core/item_detail.html', {'item': item})
+
+def cat(request,val):
+    item=Document.objects.filter(color__in=[val])
+    return render(request, 'core/home.html', {'documents': item})
